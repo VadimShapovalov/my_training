@@ -1,28 +1,65 @@
+# import csv
+#
+#
+# with open(r'C:\Users\Vadim\Downloads\sales.csv', 'r', encoding='utf-8') as file:
+#     rows = csv.reader(file, delimiter=';')
+#     for item in rows:
+#         if item[1].isdigit() and item[2].isdigit():
+#             if int(item[1]) > int(item[2]):
+#                 print(item[0])
+
 # check
 # check new branch
+# import sys
+#
+# numbers = [int(line) for line in sys.stdin]
+# delta_a = numbers[1] - numbers[0]
+# delta_g = numbers[1] / numbers[0]
+# is_ar, is_ge = True, True
+# for i in range(2, len(numbers)):
+#     if numbers[i] - numbers[i - 1] != delta_a:
+#         is_ar = False
+#         break
+# for i in range(2, len(numbers)):
+#     if numbers[i] / numbers[i - 1] != delta_g:
+#         is_ge = False
+#         break
+# if is_ar:
+#     print("Арифметическая прогрессия")
+# if is_ge:
+#     print("Геометрическая прогрессия")
+# else:
+#     print("Не прогрессия")
 
-import sys
+# dates = []
+# for line in sys.stdin:
+#     dates.append(datetime.datetime.strptime(line.strip(), '%d.%m.%Y'))
+# for date in dates:
+#     if dates.count(date) > 1:
+#         repeat = True
+#         break
+#     else:
+#         repeat = False
+# if dates == sorted(dates) and repeat != True:
+#     print("ASC")
+# elif dates == sorted(dates, reverse=True) and repeat != True:
+#     print("DESC")
+# else:
+#     print("MIX")
 
-news = dict()
-for line in sys.stdin:
-    if '/' in line:
-        text = line.strip().split("/")
-        if text[1].strip() not in news.keys():
-            news[text[1].strip()] = [[text[0].strip(), float(text[2].strip())]]
-        else:
-            news[text[1].strip()].append([text[0].strip(), float(text[2].strip())])
-    else:
-        result = sorted(news[line])
-        result = sorted(result, key=lambda x: x[1])
-for i in result:
-    print(i[0])
-
-
-
-
-
-
-
+# news = dict()
+# for line in sys.stdin:
+#     if '/' in line:
+#         text = line.strip().split("/")
+#         if text[1].strip() not in news.keys():
+#             news[text[1].strip()] = [[text[0].strip(), float(text[2].strip())]]
+#         else:
+#             news[text[1].strip()].append([text[0].strip(), float(text[2].strip())])
+#     else:
+#         result = sorted(news[line])
+#         result = sorted(result, key=lambda x: x[1])
+# for i in result:
+#     print(i[0])
 
 # for line in sys.stdin:
 #     if not line.strip().startswith('#'):
@@ -64,7 +101,7 @@ for i in result:
 #     print("".join(reversed(line.strip())))
 
 
-#gen = (for i in range(0, 101) for j in str(i) if int(j)
+# gen = (for i in range(0, 101) for j in str(i) if int(j)
 
 # for i in range(0, 101):
 #     if i % 2 == 0:
@@ -75,10 +112,12 @@ for i in result:
 #             print(i)
 
 # ✔Выведите в консоль таблицу умножения от 2х2 до 9х10 как на школьной тетрадке.
-# ✔Таблицу создайте в виде однострочного генератора, где каждый элемент генератора — отдельный пример таблицы умножения.
+# ✔Таблицу создайте в виде однострочного генератора, где каждый элемент генератора
+# — отдельный пример таблицы умножения.
 # ✔Для вывода результата используйте «принт» без перехода на новую строку.
 
-#print('\n\n'.join(('\n'.join('\t\t'.join(f'{i:^3} x {j:^3} = {i * j:^3}' for i in range(i[0], i[1])) for j in range(2, 11)) for i in [(2,6), (6,10)])), sep='')
+# print('\n\n'.join(('\n'.join('\t\t'.join(f'{i:^3} x {j:^3} = {i * j:^3}' for i in range(i[0], i[1]))
+# for j in range(2, 11)) for i in [(2,6), (6,10)])), sep='')
 
 # import calendar
 # import datetime
@@ -105,13 +144,12 @@ for i in result:
 #         first_th = datetime.date(year, 1, 1 + (7 - first_day))
 #         print(first_th.weekday(), first_th)
 #     # while data_monday.year == year:
-    #     list_monday.append(data_monday)
-    #     data_monday = data_monday + datetime.timedelta(days=7)
-    # return list_monday
+#     list_monday.append(data_monday)
+#     data_monday = data_monday + datetime.timedelta(days=7)
+# return list_monday
 
 
-
-#get_all_mondays(2023)
+# get_all_mondays(2023)
 
 
 # from itertools import chain, combinations
@@ -196,7 +234,7 @@ for i in result:
 #        "сугробы и мгла, странным образом проникавшая даже в дневной свет. На скамейках сидели те же неподвижные старухи;" \
 #        " вверху, над черной сеткой ветвей, серело то же небо, похожее на ветхий, до земли провисший под тяжестью" \
 #        " спящего Бога матрац."
-#1
+# 1
 # def print_by_word(text: str):
 #     my_list = re.sub(r'[.,"\'-?-:–!;]', "", text.lower()).split()
 #     max_length = len(max(my_list, key=len))
@@ -207,7 +245,7 @@ for i in result:
 #
 # print_by_word(text)
 
-#2
+# 2
 # ✔ Напишите функцию, которая принимает строку текста.
 # ✔ Сформируйте список с уникальными кодами Unicode каждого
 # символа введённой строки отсортированный по убыванию.
@@ -218,7 +256,7 @@ for i in result:
 #     print(i)
 # print(sorted(list_ord, reverse=True))
 
-#3
+# 3
 # Функция получает на вход строку из двух чисел через пробел.
 # ✔ Сформируйте словарь, где ключом будет
 # символ из Unicode, а значением — целое число.
@@ -244,12 +282,11 @@ for i in result:
 #     return my_dict
 # print(creat_dict())
 # print(ord('4'))
- # 8
+# 8
 # Создайте несколько переменных заканчивающихся и не оканчивающихся на «s».
 # ✔ Напишите функцию, которая при запуске заменяет содержимое переменных
 # оканчивающихся на s (кроме переменной из одной буквы s) на None.
 # ✔ Значения не удаляются, а помещаются в одноимённые переменные без s на конце.
-
 
 
 # import calendar
@@ -269,9 +306,6 @@ for i in result:
 #     return dates_list
 
 
-
-
-
 # ✔Напишите функцию, которая принимает строку текста.
 # Вывести функцией каждое слово с новой строки. ✔Строки нумеруются начиная с единицы.
 # ✔Слова выводятся отсортированными согласно кодировки Unicode. ✔Текст выравнивается по правому краю так,
@@ -289,8 +323,6 @@ for i in result:
 # every_word(text)
 
 
-
-
 # ✔Напишите функцию, которая принимает строку текста.
 # ✔Сформируйте список с уникальными кодами Unicode каждого символа введённой строки отсортированный по убыванию.
 
@@ -303,8 +335,6 @@ for i in result:
 #     my_list.sort()
 #     return my_list
 # print(sorted_unicod(text))
-
-
 
 
 # ✔Функция получает на вход строку из двух чисел через пробел.
@@ -320,7 +350,6 @@ for i in result:
 #         my_dict[chr(i)] = i
 #     return  my_dict
 # print(creat_dict())
-
 
 
 # Функция получает на вход список чисел. ✔Отсортируйте его элементы in place без использования встроенных в язык сортировок.
