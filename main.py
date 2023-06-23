@@ -1,6 +1,29 @@
-# import csv
-#
-#
+import csv
+
+n = int(input())
+with open(r'C:\Users\Vadim\Downloads\deniro.csv', 'r', encoding='utf-8') as file:
+    rows = list(csv.reader(file, delimiter=','))
+    if n == 1:
+        rows.sort(key=lambda x: x[n-1])
+    else:
+        rows.sort(key=lambda x: int(x[n-1]))
+for i in rows:
+    print(','.join(i))
+# with open(r'C:\Users\Vadim\Downloads\salary_data.csv', 'r', encoding='utf-8') as file:
+#     rows = csv.reader(file, delimiter=';')
+#     next(rows)
+#     print(rows)
+#     my_dict = {}
+#     for line in rows:
+#         my_dict.setdefault(line[0], []).append(int(line[1]))
+#     for key, val in my_dict.items():
+#         my_dict[key] = sum(val) / len(val)
+#     my_dict = sorted(my_dict.items())
+#     result = sorted(my_dict, key=lambda x: x[1])
+# for i in result:
+#     print(i[0])
+
+
 # with open(r'C:\Users\Vadim\Downloads\sales.csv', 'r', encoding='utf-8') as file:
 #     rows = csv.reader(file, delimiter=';')
 #     for item in rows:
