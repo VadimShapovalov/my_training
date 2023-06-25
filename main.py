@@ -1,14 +1,64 @@
 import csv
 
-n = int(input())
-with open(r'C:\Users\Vadim\Downloads\deniro.csv', 'r', encoding='utf-8') as file:
-    rows = list(csv.reader(file, delimiter=','))
-    if n == 1:
-        rows.sort(key=lambda x: x[n-1])
-    else:
-        rows.sort(key=lambda x: int(x[n-1]))
-for i in rows:
-    print(','.join(i))
+with open(r'C:\Users\Vadim\Downloads\data.csv', encoding='utf-8') as file:
+    rows = csv.DictReader(file)
+    my_dict = {}
+    for row in rows:
+        _, domain = row['email'].split('@')
+        if domain not in my_dict.keys():
+            my_dict[domain] = 1
+        else:
+            my_dict[domain] += 1
+    my_dict = sorted(my_dict.items(), key=lambda x: (x[1], x[0]))
+with open('domain_usage.csv', 'w', encoding='utf-8', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['domain', 'count'])
+    for row in my_dict:
+        writer.writerow(row)
+
+# filename = 'file.csv'
+# def csv_columns(filename):
+#     with open(r'C:\Users\Vadim\Downloads\file.csv', encoding='utf-8') as file:
+#         rows = csv.DictReader(file)
+#         my_dict = {}
+#         for row in rows:
+#             for key, val in row.items():
+#                 my_dict.setdefault(key, []).append(val)
+#         print(my_dict)
+
+# with open(r'C:\Users\Vadim\Downloads\file.csv', encoding='utf-8') as file:
+#     rows = csv.DictReader(file)
+#     my_dict = {}
+#     for row in rows:
+#         for key, val in row.items():
+#             my_dict.setdefault(key, []).append(val)
+#     print(my_dict)
+
+
+# with open('products.csv', encoding='utf-8') as file:
+#    rows = csv.reader(file)                               # создаем reader объект
+#    for i in rows:
+#        print(row)
+
+
+#     print(*rows)
+#     name, grade = rows[0][0], rows[0][1]
+#     my_dict = {name: [], grade: []}
+#     for i in range(1, len(rows)):
+#         my_dict[name].append(rows[i][0])
+#         my_dict[grade].append(rows[i][1])
+#         return my_dict
+#
+# csv_columns(text)
+# n = int(input())
+# with open(r'C:\Users\Vadim\Downloads\deniro.csv', 'r', encoding='utf-8') as file:
+#     rows = list(csv.reader(file, delimiter=','))
+#     if n == 1:
+#         rows.sort(key=lambda x: x[n-1])
+#     else:
+#         rows.sort(key=lambda x: int(x[n-1]))
+# for i in rows:
+#     print(','.join(i))
 # with open(r'C:\Users\Vadim\Downloads\salary_data.csv', 'r', encoding='utf-8') as file:
 #     rows = csv.reader(file, delimiter=';')
 #     next(rows)
