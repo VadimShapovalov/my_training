@@ -1,20 +1,44 @@
 import csv
 
-with open(r'C:\Users\Vadim\Downloads\data.csv', encoding='utf-8') as file:
-    rows = csv.DictReader(file)
-    my_dict = {}
+with open(r'C:\Users\Vadim\Downloads\titanic.csv', encoding='utf-8') as file:
+    rows = csv.DictReader(file, delimiter=';')
+    male, female = [], []
     for row in rows:
-        _, domain = row['email'].split('@')
-        if domain not in my_dict.keys():
-            my_dict[domain] = 1
-        else:
-            my_dict[domain] += 1
-    my_dict = sorted(my_dict.items(), key=lambda x: (x[1], x[0]))
-with open('domain_usage.csv', 'w', encoding='utf-8', newline='') as file:
-    writer = csv.writer(file)
-    writer.writerow(['domain', 'count'])
-    for row in my_dict:
-        writer.writerow(row)
+        if float(row['age']) < 18 and row['survived'] == '1':
+            if row['sex'] == 'male':
+                male.append(row['name'])
+            else:
+                female.append(row['name'])
+print(*male, sep='\n')
+print(*female, sep='\n')
+
+
+# with open(r'C:\Users\Vadim\Downloads\wifi.csv', encoding='utf-8') as file:
+#     rows = csv.DictReader(file, delimiter=';')
+#     my_dict = dict()
+#     for row in rows:
+#         my_dict[row['district']] = my_dict.get(row['district'], 0) + int(row['number_of_access_points'])
+# my_dict = sorted(my_dict.items(), key=lambda x: (-x[1], x[0]))
+# for i in my_dict:
+#     print(f"{i[0]}: {i[1]}")
+#
+
+
+# with open(r'C:\Users\Vadim\Downloads\data.csv', encoding='utf-8') as file:
+#     rows = csv.DictReader(file)
+#     my_dict = {}
+#     for row in rows:
+#         _, domain = row['email'].split('@')
+#         if domain not in my_dict.keys():
+#             my_dict[domain] = 1
+#         else:
+#             my_dict[domain] += 1
+#     my_dict = sorted(my_dict.items(), key=lambda x: (x[1], x[0]))
+# with open('domain_usage.csv', 'w', encoding='utf-8', newline='') as file:
+#     writer = csv.writer(file)
+#     writer.writerow(['domain', 'count'])
+#     for row in my_dict:
+#         writer.writerow(row)
 
 # filename = 'file.csv'
 # def csv_columns(filename):
