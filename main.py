@@ -1,17 +1,77 @@
 import csv
+from datetime import datetime
 
-with open(r'C:\Users\Vadim\Downloads\titanic.csv', encoding='utf-8') as file:
-    rows = csv.DictReader(file, delimiter=';')
-    male, female = [], []
-    for row in rows:
-        if float(row['age']) < 18 and row['survived'] == '1':
-            if row['sex'] == 'male':
-                male.append(row['name'])
-            else:
-                female.append(row['name'])
-print(*male, sep='\n')
-print(*female, sep='\n')
 
+def condense_csv(filename, id_name):
+    with open(filename, encoding='utf-8') as file:
+        rows = csv.reader(file)
+        my_dict = dict()
+        lst = []
+        for i in rows:
+            lst.append(i)
+    for i in range(len(lst)):
+        if lst[i][0] not in my_dict.keys():
+            my_dict[lst[i][0]] = [(lst[i][1], lst[i][2])]
+        else:
+            my_dict[lst[i][0]].append((lst[i][1], lst[i][2]))
+    print(my_dict)
+    title = [id_name]
+    result = []
+    for key, val in my_dict.items():
+        lst2 = [key]
+        for i in val:
+            if i[0] not in title:
+                title.append(i[0])
+            lst2.append(i[1])
+        result.append(lst2)
+    result.insert(0, title)
+    print(result)
+    with open(r'C:\Users\Vadim\Downloads\condensed.csv', 'w', encoding='utf-8', newline='') as file:
+        writer = csv.writer(file)
+        for i in result:
+            writer.writerow(i)
+
+
+filename = r'C:\Users\Vadim\Downloads\name_log.csv'
+id_name = 'ID'
+condense_csv(filename, id_name)
+
+# with open(r'C:\Users\Vadim\Downloads\name_log.csv', encoding='utf-8') as file:
+#     rows = csv.DictReader(file)
+#     n_n_l = dict()
+#     for row in rows:
+#         if row['email'] not in n_n_l.keys():
+#             n_n_l[row['email']] = [row['username'], row['dtime']]
+#         else:
+#             date = datetime.strptime(row['dtime'], '%d/%m/%Y %H:%M')
+#             date2 = datetime.strptime(n_n_l[row['email']][1], '%d/%m/%Y %H:%M')
+#             if date > date2:
+#                 n_n_l[row['email']] = [row['username'], row['dtime']]
+#             else:
+#                 continue
+# new_lst = []
+# for key, val in n_n_l.items():
+#     new_lst.append([val[0], key, val[1]])
+# new_lst.sort(key=lambda x: x[1])
+#
+# with open(r'C:\Users\Vadim\Downloads\new_name_log.csv', 'w', encoding='utf-8', newline='') as file:
+#     writer = csv.writer(file)
+#     writer.writerow(['username','email','dtime'])
+#     for row in new_lst:
+#         writer.writerow(row)
+
+
+# with open(r'C:\Users\Vadim\Downloads\titanic.csv', encoding='utf-8') as file:
+#     rows = csv.DictReader(file, delimiter=';')
+#     male, female = [], []
+#     for row in rows:
+#         if float(row['age']) < 18 and row['survived'] == '1':
+#             if row['sex'] == 'male':
+#                 male.append(row['name'])
+#             else:
+#                 female.append(row['name'])
+# print(*male, sep='\n')
+# print(*female, sep='\n')
 
 # with open(r'C:\Users\Vadim\Downloads\wifi.csv', encoding='utf-8') as file:
 #     rows = csv.DictReader(file, delimiter=';')
