@@ -1,5 +1,3 @@
-# add change 3
-
 # add change 2
 
 # add change 1
@@ -124,6 +122,8 @@
 #                 female.append(row['name'])
 # print(*male, sep='\n')
 # print(*female, sep='\n')
+=======
+>>>>>>> parent of 365a604 (add task 27.06.23)
 
 # with open(r'C:\Users\Vadim\Downloads\wifi.csv', encoding='utf-8') as file:
 #     rows = csv.DictReader(file, delimiter=';')
