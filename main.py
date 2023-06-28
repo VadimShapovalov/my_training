@@ -1,40 +1,75 @@
 import csv
-from datetime import datetime
+
+with open(r'C:\Users\Vadim\Downloads\prices.csv', encoding='utf-8') as file:
+    rows = list(csv.reader(file, delimiter=';'))
+    min_g = 99999999
+    for row in rows[1:]:
+        min_ = int(min(row[1:], key=int))
+        ind = row.index(str(min_))
+        if min_ < min_g:
+            lst = [(rows[0][ind], row[0])]
+            min_g = min_
+        elif min_ == min_g:
+            lst.append((rows[0][ind], row[0]))
+    result = sorted(lst, key=lambda x: (x[0], x[1]))
+
+    print(f'{result[0][0]}: {result[0][1]}')
 
 
-def condense_csv(filename, id_name):
-    with open(filename, encoding='utf-8') as file:
-        rows = csv.reader(file)
-        my_dict = dict()
-        lst = []
-        for i in rows:
-            lst.append(i)
-    for i in range(len(lst)):
-        if lst[i][0] not in my_dict.keys():
-            my_dict[lst[i][0]] = [(lst[i][1], lst[i][2])]
-        else:
-            my_dict[lst[i][0]].append((lst[i][1], lst[i][2]))
-    print(my_dict)
-    title = [id_name]
-    result = []
-    for key, val in my_dict.items():
-        lst2 = [key]
-        for i in val:
-            if i[0] not in title:
-                title.append(i[0])
-            lst2.append(i[1])
-        result.append(lst2)
-    result.insert(0, title)
-    print(result)
-    with open(r'C:\Users\Vadim\Downloads\condensed.csv', 'w', encoding='utf-8', newline='') as file:
-        writer = csv.writer(file)
-        for i in result:
-            writer.writerow(i)
+# with open(r'C:\Users\Vadim\Downloads\student_counts.csv', encoding='utf-8') as file:
+#     rows = csv.DictReader(file)
+#     def sort_(x: str):
+#         dig, word = x.split('-')
+#         return (int(dig), word)
+#     name_sorted = sorted(rows.fieldnames[1:], key=sort_ )
+#     result = []
+#     name_sorted.insert(0, 'year')
+#     for row in rows:
+#         lst = []
+#         for i in name_sorted:
+#             lst.append(row[i])
+#         result.append(lst)
+#     result.insert(0, name_sorted)
+# with open(r'C:\Users\Vadim\Downloads\sorted_student_counts.csv', 'w', encoding='utf-8', newline='') as file:
+#     writer = csv.writer(file)
+#     for i in result:
+#         writer.writerow(i)
 
+# from datetime import datetime
 
-filename = r'C:\Users\Vadim\Downloads\name_log.csv'
-id_name = 'ID'
-condense_csv(filename, id_name)
+# def condense_csv(filename, id_name):
+#     with open(filename, encoding='utf-8') as file:
+#         rows = csv.reader(file)
+#         my_dict = dict()
+#         lst = []
+#         for i in rows:
+#             lst.append(i)
+#     for i in range(len(lst)):
+#         if lst[i][0] not in my_dict.keys():
+#             my_dict[lst[i][0]] = [(lst[i][1], lst[i][2])]
+#         else:
+#             my_dict[lst[i][0]].append((lst[i][1], lst[i][2]))
+#     print(my_dict)
+#     title = [id_name]
+#     result = []
+#     for key, val in my_dict.items():
+#         lst2 = [key]
+#         for i in val:
+#             if i[0] not in title:
+#                 title.append(i[0])
+#             lst2.append(i[1])
+#         result.append(lst2)
+#     result.insert(0, title)
+#     print(result)
+#     with open(r'C:\Users\Vadim\Downloads\condensed.csv', 'w', encoding='utf-8', newline='') as file:
+#         writer = csv.writer(file)
+#         for i in result:
+#             writer.writerow(i)
+#
+#
+# filename = r'C:\Users\Vadim\Downloads\name_log.csv'
+# id_name = 'ID'
+# condense_csv(filename, id_name)
 
 # with open(r'C:\Users\Vadim\Downloads\name_log.csv', encoding='utf-8') as file:
 #     rows = csv.DictReader(file)
