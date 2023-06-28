@@ -1,4 +1,5 @@
 import csv
+<<<<<<< HEAD
 
 with open(r'C:\Users\Vadim\Downloads\prices.csv', encoding='utf-8') as file:
     rows = list(csv.reader(file, delimiter=';'))
@@ -14,8 +15,22 @@ with open(r'C:\Users\Vadim\Downloads\prices.csv', encoding='utf-8') as file:
     result = sorted(lst, key=lambda x: (x[0], x[1]))
 
     print(f'{result[0][0]}: {result[0][1]}')
+=======
+>>>>>>> parent of 365a604 (add task 27.06.23)
 
+with open(r'C:\Users\Vadim\Downloads\titanic.csv', encoding='utf-8') as file:
+    rows = csv.DictReader(file, delimiter=';')
+    male, female = [], []
+    for row in rows:
+        if float(row['age']) < 18 and row['survived'] == '1':
+            if row['sex'] == 'male':
+                male.append(row['name'])
+            else:
+                female.append(row['name'])
+print(*male, sep='\n')
+print(*female, sep='\n')
 
+<<<<<<< HEAD
 # with open(r'C:\Users\Vadim\Downloads\student_counts.csv', encoding='utf-8') as file:
 #     rows = csv.DictReader(file)
 #     def sort_(x: str):
@@ -107,6 +122,8 @@ with open(r'C:\Users\Vadim\Downloads\prices.csv', encoding='utf-8') as file:
 #                 female.append(row['name'])
 # print(*male, sep='\n')
 # print(*female, sep='\n')
+=======
+>>>>>>> parent of 365a604 (add task 27.06.23)
 
 # with open(r'C:\Users\Vadim\Downloads\wifi.csv', encoding='utf-8') as file:
 #     rows = csv.DictReader(file, delimiter=';')
