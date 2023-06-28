@@ -1,36 +1,35 @@
-import csv
-<<<<<<< HEAD
 
-with open(r'C:\Users\Vadim\Downloads\prices.csv', encoding='utf-8') as file:
-    rows = list(csv.reader(file, delimiter=';'))
-    min_g = 99999999
-    for row in rows[1:]:
-        min_ = int(min(row[1:], key=int))
-        ind = row.index(str(min_))
-        if min_ < min_g:
-            lst = [(rows[0][ind], row[0])]
-            min_g = min_
-        elif min_ == min_g:
-            lst.append((rows[0][ind], row[0]))
-    result = sorted(lst, key=lambda x: (x[0], x[1]))
+# add change 1
 
-    print(f'{result[0][0]}: {result[0][1]}')
-=======
->>>>>>> parent of 365a604 (add task 27.06.23)
+# import csv
+#
+# with open(r'C:\Users\Vadim\Downloads\prices.csv', encoding='utf-8') as file:
+#     rows = list(csv.reader(file, delimiter=';'))
+#     min_g = 99999999
+#     for row in rows[1:]:
+#         min_ = int(min(row[1:], key=int))
+#         ind = row.index(str(min_))
+#         if min_ < min_g:
+#             lst = [(rows[0][ind], row[0])]
+#             min_g = min_
+#         elif min_ == min_g:
+#             lst.append((rows[0][ind], row[0]))
+#     result = sorted(lst, key=lambda x: (x[0], x[1]))
+#
+#     print(f'{result[0][0]}: {result[0][1]}')
+#
+# with open(r'C:\Users\Vadim\Downloads\titanic.csv', encoding='utf-8') as file:
+#     rows = csv.DictReader(file, delimiter=';')
+#     male, female = [], []
+#     for row in rows:
+#         if float(row['age']) < 18 and row['survived'] == '1':
+#             if row['sex'] == 'male':
+#                 male.append(row['name'])
+#             else:
+#                 female.append(row['name'])
+# print(*male, sep='\n')
+# print(*female, sep='\n')
 
-with open(r'C:\Users\Vadim\Downloads\titanic.csv', encoding='utf-8') as file:
-    rows = csv.DictReader(file, delimiter=';')
-    male, female = [], []
-    for row in rows:
-        if float(row['age']) < 18 and row['survived'] == '1':
-            if row['sex'] == 'male':
-                male.append(row['name'])
-            else:
-                female.append(row['name'])
-print(*male, sep='\n')
-print(*female, sep='\n')
-
-<<<<<<< HEAD
 # with open(r'C:\Users\Vadim\Downloads\student_counts.csv', encoding='utf-8') as file:
 #     rows = csv.DictReader(file)
 #     def sort_(x: str):
