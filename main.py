@@ -1,3 +1,27 @@
+import json
+
+club1 = {"name": "FC Byern Munchen", "country": "Germany", "founded": 1900,
+         "trainer": "Julian Nagelsmann", "goalkeeper": "M. Neuer", "league_position": 1}
+
+club2 = {"name": "FC Barcelona", "country": "Spain", "founded": 1899,
+         "trainer": "Xavier Creus", "goalkeeper": "M. Ter Stegen", "league_position": 7}
+
+club3 = {"name": "FC Manchester United", "country": "England", "founded": 1878,
+         "trainer": "Michael Carrick", "goalkeeper": "D. De Gea", "league_position": 8}
+
+lst = [club1, club2, club3]
+with open("data.json", "w", encoding='utf-8') as file:
+    json.dumps(lst, indent=3)
+
+
+# countries = {'Monaco': 'Monaco', 'Iceland': 'Reykjavik', 'Kenya': 'Nairobi', 'Kazakhstan': 'Nur-Sultan',
+#              'Mali': 'Bamako', 'Colombia': 'Bogota', 'Finland': 'Helsinki', 'Costa Rica': 'San Jose',
+#              'Cuba': 'Havana', 'France': 'Paris', 'Gabon': 'Libreville', 'Liberia': 'Monrovia',
+#              'Angola': 'Luanda', 'India': 'New Delhi', 'Canada': 'Ottawa', 'Australia': 'Canberra'}
+#
+# json_countries = json.dumps(countries, indent=3, sort_keys=True, separators=(',',' - '))
+# print(json_countries)
+
 # add change 4
 
 # add change 3
